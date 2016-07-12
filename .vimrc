@@ -6,7 +6,6 @@ set shiftwidth=4
 syntax on
 set backspace=indent,eol,start
 set visualbell t_vb=
-colorscheme desert
 set expandtab
 set tabstop=4
 set incsearch
@@ -16,6 +15,12 @@ set mouse=a
 filetype indent on
 nmap <silent> <leader>n :silent :nohlsearch<CR>
 
+if has('gui_running')
+    colorscheme jellybeans
+else
+    colorscheme firewatch
+endif
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -24,3 +29,5 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'artur-shaik/vim-javacomplete2'
 
 call plug#end()
+
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
